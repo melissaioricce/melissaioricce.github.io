@@ -6,16 +6,35 @@
 }
 
 body {
-  background: #0f172a;
+  background: transparent;
   color: white;
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 /* NAVBAR */
 header {
   position: fixed;
+  top: -120px; /* escondido de verdade */
+  left: 0;
   width: 100%;
+  height: 70px;
   background: #020617;
-  padding: 15px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: 0.4s;
+}
+  header {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 nav {
@@ -46,10 +65,13 @@ nav a:hover {
 
 /* HERO (tela inicial) */
 .hero {
-  height: 100vh;
+ height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 20px; /* ESSENCIAL */
+  text-align: center;
   padding: 40px;
 }
 
@@ -66,6 +88,7 @@ nav a:hover {
 /* SEÇÕES */
 section {
   padding: 80px 40px;
+  scroll-margin-top: -120px;
 }
 
 /* PROJETOS */
@@ -96,6 +119,19 @@ section {
 /* TÍTULOS */
 h2 {
   margin-bottom: 20px;
+  h2 {
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 3px;
+  background: #38bdf8;
+  margin: 5px auto 0;
+}
 }
 
 .hero {
@@ -107,35 +143,302 @@ h2 {
   max-width: 600px;
 }
 
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #38bdf8;
-  color: #0f172a;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: 0.3s;
+#sobre p {
+  text-align: justify;
+  line-height: 1.6;
 }
 
+.btn {
+ margin-top: 15px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  padding: 12px 25px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.3s;; /* REMOVE SUBLINHADO */
+}
+
+
 .btn:hover {
-  background: #0ea5e9;
+ transform: scale(1.05);
+ box-shadow: 0 5px 15px rgba(56,189,248,0.4)
 }
 .foto {
   width: 150px;
   border-radius: 50%;
-  margin-bottom: 20px;
-  border: 3px solid #38bdf8;
+  margin-top: 20px;
+  animation: flutuar 3s ease-in-out infinite;
+  box-shadow: 0 0 25px rgba(56,189,248,0.5)
+}
+
+@keyframes flutuar {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.redes {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
 }
 
 .redes a {
-  margin: 0 10px;
-  font-size: 22px;
+  font-size: 26px;
   color: #38bdf8;
   transition: 0.3s;
 }
 
-.redes a:hover {
+/* RESPONSIVO */
+@media (max-width: 768px) {
+
+  header {
+    padding: 15px;
+  }
+
+  header {
+  transition: 0.3s;
+}
+
+header.scrolled {
+  background: rgba(2, 6, 23, 0.98);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+  nav {
+  max-width: 1100px;
+  margin: auto;
+  width: 100%;
+}
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .foto {
+    width: 120px;
+  }
+
+}
+
+.exp {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #1e293b;
+  border-radius: 8px;
+}
+
+section {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h2 {
+  border-left: 4px solid #38bdf8;
+  padding-left: 10px;
+}
+
+section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.8s;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
   color: white;
-  transform: scale(1.2);
+  font-size: 22px;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+
+.whatsapp:hover {
+  transform: scale(1.1);
+}
+
+body {
+  background: linear-gradient(120deg, #020617, #0f172a);
+  background: radial-gradient(circle at top, #0f172a, #020617);
+}
+
+.hero h1 {
+  font-size: 48px;
+}
+
+.card {
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  padding: 20px;
+  border-radius: 12px;
+  width: 250px;
+  transition: 0.4s;
+  border: 1px solid #334155;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(56,189,248,0.3), transparent);
+  top: 0;
+  left: -100%;
+  transition: 0.5s;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.hero h1 {
+  font-size: 48px;
+}
+
+.hero h1 span.nome {
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+nav a:hover {
+  color: #38bdf8;
+}
+
+section {
+  scroll-margin-top: 80px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 100px;
+}
+
+.hero-content {
+  animation: aparecer 1.5s ease;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.wave {
+  display: inline-block;
+  animation: wave 2s infinite;
+  transform-origin: 70% 70%;
+  color: white !important;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-8deg); }
+  45% { transform: rotate(14deg); }
+  60% { transform: rotate(-4deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+.skills {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.skills div {
+  text-align: center;
+  font-size: 30px;
+}
+
+.skills i {
+  color: #38bdf8;
+  margin-bottom: 10px;
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
