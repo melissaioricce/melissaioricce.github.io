@@ -51,3 +51,14 @@ if (typeof particlesJS !== "undefined") {
     }
   });
 }
+
+window.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+
+  if (window.scrollY > 50) {
+    header.style.top = "0";
+  } else {
+    header.style.top = "-120px";
+  }
+});
+
